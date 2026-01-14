@@ -29,29 +29,91 @@
 </html>
 <a href="main.html"><button type="button">Back to Home</button></a>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin-top: 50px;
-    }
-    form {
-        display: inline-block;
-        text-align: left;
-        margin-top: 20px;
-    }
-    div {
-        margin-bottom: 15px;
-    }
-    label {
-        display: inline-block;
-        width: 100px;
-    }
-    input {
-        padding: 5px;
-        width: 200px;
-    }
-    button {
-        padding: 10px 142px;
-        font-size: 16px;
-        cursor: pointer;
-    }
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        main {
+            background: #ffffff;
+            width: 100%;
+            max-width: 380px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2a5298;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .nextBtn {
+            background-color: #2a5298;
+            color: #fff;
+        }
+
+        .nextBtn:hover {
+            background-color: #1e3c72;
+        }
+
+        .backBtn {
+            margin-top: 15px;
+            background: transparent;
+            color: #2a5298;
+            border: 2px solid #2a5298;
+        }
+
+        .backBtn:hover {
+            background: #2a5298;
+            color: #fff;
+        }
+    </style>
