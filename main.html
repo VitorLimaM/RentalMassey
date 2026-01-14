@@ -19,12 +19,12 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div>
-                <button type="submit">Sign Up</button>
+                <button id="submitBtn" type="submit">Sign In</button>
             </div>
         </form>   
         </div>
         <div>
-        <a href="SignUp.html">Create an account</a>
+        <a href="SignUp.html"><button type="button">Create an Account</button></a>
         </div>
     </main>
 </body>
@@ -36,10 +36,11 @@
         margin-top: 50px;
     }
     button {
-        padding: 10px 130px;
+        padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
-        left: 50px;
+        text-align: center;
+        align-self: center;
     }
     img {
         margin-bottom: 20px;
@@ -59,5 +60,10 @@
     input {
         padding: 5px;
         width: 200px;
+    }
+
+    #submitBtn {
+        margin:auto;
+        text-align: center;
     }
 </style>
