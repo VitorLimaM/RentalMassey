@@ -9,10 +9,21 @@
         <img src="logo.png" alt="Massey Logo" width="200">
         <h1>Welcome to Massey Rental</h1>
         <div>
-            <button class="Login">Sign in</button>
+        <form>
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>   
         </div>
         <div>
-        <button class="Register">Sign up</button>
         <a href="SignUp.html">Create an account</a>
         </div>
     </main>
@@ -25,12 +36,28 @@
         margin-top: 50px;
     }
     button {
-        margin: 10px;
-        padding: 10px 20px;
+        padding: 10px 130px;
         font-size: 16px;
         cursor: pointer;
+        left: 50px;
     }
     img {
         margin-bottom: 20px;
+    }
+    form {
+        display: inline-block;
+        text-align: left;
+        margin-top: 20px;
+    }
+    div {
+        margin-bottom: 15px;
+    }
+    label {
+        display: inline-block;
+        width: 100px;
+    }
+    input {
+        padding: 5px;
+        width: 200px;
     }
 </style>
