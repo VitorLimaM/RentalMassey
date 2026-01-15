@@ -8,7 +8,7 @@
     <main>
         <img src="logo.png" alt="Massey Logo" width="200">
         <h1>Welcome to Massey Rental</h1>
-        <div>
+
         <form id="loginForm">
             <div class="form-group">
                 <label for="username">Username:</label>
@@ -21,17 +21,16 @@
                 <small id="passError" class="error"></small>
             </div>
             <div>
-               <button id="submitBtn" type="submit">Sign In</button>
+                <button id="submitBtn" type="submit">Sign In</button>
             </div>
         </form>   
-        </div>
-        <div>
-        <a href="SignUp.html"><button type="button">Create an Account</button></a>
+
+        <div class="signup">
+            <a href="signup1.html"><button type="button">Create an Account</button></a>
         </div>
     </main>
-</body>
-</html>
-<style>
+
+    <style>
         * {
             box-sizing: border-box;
         }
@@ -127,6 +126,7 @@
             background: #2a5298;
             color: #fff;
         }
+
         .error {
             color: red;
             font-size: 12px;
@@ -134,38 +134,40 @@
             margin-top: 5px;
         }
     </style>
-<script>
-const users = [
-  { username: "admin", password: "1234" },
-  { username: "vitor", password: "abcd" }
-];
 
-const form = document.getElementById("loginForm");
-const userError = document.getElementById("userError");
-const passError = document.getElementById("passError");
+    <script>
+        const form = document.getElementById("loginForm");
+        const userError = document.getElementById("userError");
+        const passError = document.getElementById("passError");
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
 
-  userError.textContent = "";
-  passError.textContent = "";
+            const usernameInput = document.getElementById("username").value.trim();
+            const passwordInput = document.getElementById("password").value.trim();
 
-  const user = username.value.trim();
-  const pass = password.value.trim();
+            // Pega usuário do Local Storage
+            const storedUser = JSON.parse(localStorage.getItem("user"));
 
-  const userExists = users.find(u => u.username === user);
+            if (!storedUser) {
+                userError.textContent = "No account found. Please sign up.";
+                return;
+            }
 
-  if (!userExists) {
-    userError.textContent = "User not found";
-    return;
-  }
+            if (storedUser.username !== usernameInput) {
+                userError.textContent = "User not found";
+                return;
+            }
 
-  if (userExists.password !== pass) {
-    passError.textContent = "Incorrect password";
-    return;
-  }
+            if (storedUser.password !== passwordInput) {
+                passError.textContent = "Incorrect password";
+                return;
+            }
 
-  window.location.href = "homepage.html";
-});
-
-</script>
+            // Login ok
+            localStorage.setItem("loggedIn", "true");
+            window.location.href = "homepage.html";
+        });
+    </script>
+</body>
+</html>
