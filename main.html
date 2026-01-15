@@ -9,17 +9,19 @@
         <img src="logo.png" alt="Massey Logo" width="200">
         <h1>Welcome to Massey Rental</h1>
         <div>
-        <form>
-            <div>
+        <form id="loginForm">
+            <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
+                <small id="userError" class="error"></small>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
+                <small id="passError" class="error"></small>
             </div>
             <div>
-                <button id="submitBtn" type="submit">Sign In</button>
+               <button id="submitBtn" type="submit">Sign In</button>
             </div>
         </form>   
         </div>
@@ -125,4 +127,45 @@
             background: #2a5298;
             color: #fff;
         }
+        .error {
+            color: red;
+            font-size: 12px;
+            display: block;
+            margin-top: 5px;
+        }
     </style>
+<script>
+const users = [
+  { username: "admin", password: "1234" },
+  { username: "vitor", password: "abcd" }
+];
+
+const form = document.getElementById("loginForm");
+const userError = document.getElementById("userError");
+const passError = document.getElementById("passError");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  userError.textContent = "";
+  passError.textContent = "";
+
+  const user = username.value.trim();
+  const pass = password.value.trim();
+
+  const userExists = users.find(u => u.username === user);
+
+  if (!userExists) {
+    userError.textContent = "User not found";
+    return;
+  }
+
+  if (userExists.password !== pass) {
+    passError.textContent = "Incorrect password";
+    return;
+  }
+
+  window.location.href = "homepage.html";
+});
+
+</script>
