@@ -5,5 +5,70 @@
     <title>Massey Rental</title>
 </head>
 <body>
-    <h1>Welcome to Massey Rental</h1>
+    <header>
+    <div class="logo">
+      <img src="logomain.png" alt="Logo Massey" />
+      <h1>Massey Rental</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#book">Book now</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
 </html>
+<style>
+    header {
+      background-color: #2a5298;
+      color: white;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+        color: #f0a500;
+        }
+
+</style>

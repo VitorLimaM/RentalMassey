@@ -35,6 +35,10 @@
 <script>
 document.getElementById("signupForm").addEventListener("submit", function(e){
     e.preventDefault();
+    if (localStorage.getItem(document.getElementById("username").value)) {
+        alert("Username already exists. Please choose another one.");
+        return;
+    }
 
     const user = {
         username: document.getElementById("username").value,
