@@ -1,74 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Massey Rental</title>
+  <meta charset="UTF-8" />
+  <title>Massey Rentals</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-    <div class="logo">
-      <img src="logomain.png" alt="Logo Massey" />
-      <h1>Massey Rental</h1>
-    </div>
+
+  <header class="header">
+    <h1 class="logo">Massey Rentals</h1>
     <nav>
-      <ul>
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#book">Book now</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-      </ul>
+      <a href="homepage.html">Become a host</a>
+      <a href="main.html">Login</a>
+      <a href="signup1.html">Sign Up</a>
+      <a href="addresidence.html">Add Residence</a>
     </nav>
   </header>
+
+  <section class="search">
+    <input type="text" placeholder="Location">
+    <input type="date">
+    <input type="date">
+    <button>Search</button>
+  </section>
+
+  <main class="listings">
+    <div class="card">
+      <img src="https://picsum.photos/400/250?1" alt="">
+      <div class="card-info">
+        <h3>Modern Apartment</h3>
+        <p>Vancouver, BC</p>
+        <span>$120 / night</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/400/250?2" alt="">
+      <div class="card-info">
+        <h3>Cozy House</h3>
+        <p>Burnaby, BC</p>
+        <span>$95 / night</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/400/250?3" alt="">
+      <div class="card-info">
+        <h3>Luxury Studio</h3>
+        <p>Richmond, BC</p>
+        <span>$150 / night</span>
+      </div>
+    </div>
+  </main>
+<main class="listings" id="listings"></main>
+
+<script src="listings.js"></script>
+
+</body>
 </html>
 <style>
-    header {
-      background-color: #2a5298;
-      color: white;
-      padding: 15px 40px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+body {
+  background: #f7f7f7;
+}
 
-    .logo img {
-      height: 70px;
-      width: auto;
-      object-fit: contain;
-    }
+/* HEADER */
+.header {
+  background: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-    .logo h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 1.8rem;
-      letter-spacing: 1px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      margin: 0;
-      padding: 0;
-    }
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-    }
-    nav ul li a:hover,
-    nav ul li a.active {
-        color: #f0a500;
-        }
+.logo {
+  color: #ff385c;
+}
+
+.header nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* SEARCH */
+.search {
+  background: white;
+  margin: 30px auto;
+  padding: 20px;
+  width: 80%;
+  display: flex;
+  gap: 10px;
+  border-radius: 10px;
+}
+
+.search input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.search button {
+  background: #ff385c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* LISTINGS */
+.listings {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-info {
+  padding: 15px;
+}
+
+.card-info h3 {
+  margin-bottom: 5px;
+}
+
+.card-info span {
+  color: #ff385c;
+  font-weight: bold;
+}
 
 </style>

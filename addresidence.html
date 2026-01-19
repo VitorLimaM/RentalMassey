@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Residence | Massey</title>
+</head>
+<body>
+
+<header class="header">
+  <h1 class="logo">Massey Rentals</h1>
+  <a href="main.html" class="back">← Back</a>
+</header>
+
+<main class="container">
+  <h2>Add New Residence</h2>
+
+  <form id="residenceForm">
+    <label>House Title</label>
+    <input type="text" placeholder="Modern apartment in Vancouver" required>
+
+    <label>Description</label>
+    <textarea placeholder="Basic description of the place" required></textarea>
+
+    <label>Price per night ($)</label>
+    <input type="number" required>
+
+    <label>Available days</label>
+    <div class="days">
+      <label><input type="checkbox"> Mon</label>
+      <label><input type="checkbox"> Tue</label>
+      <label><input type="checkbox"> Wed</label>
+      <label><input type="checkbox"> Thu</label>
+      <label><input type="checkbox"> Fri</label>
+      <label><input type="checkbox"> Sat</label>
+      <label><input type="checkbox"> Sun</label>
+    </div>
+<input type="text" id="title" required>
+<textarea id="description" required></textarea>
+<input type="number" id="price" required>
+
+<input type="file" multiple accept="image/*" id="images">
+
+    <label>Upload photos</label>
+    <input type="file" multiple accept="image/*" id="images">
+
+    <div class="preview" id="preview"></div>
+
+    <button type="submit">Add Residence</button>
+  </form>
+</main>
+</body>
+</html>
+<style>
+    * {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f7f7f7;
+  margin: 0;
+}
+
+.header {
+  background: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #ff385c;
+}
+
+.back {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 600px;
+  background: white;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+
+.days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px);
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.preview img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 12px;
+  background: #ff385c;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+</style>
+<script>
+const form = document.getElementById("residenceForm");
+const imagesInput = document.getElementById("images");
+const preview = document.getElementById("preview");
+
+let imageBase64 = [];
+
+imagesInput.addEventListener("change", () => {
+  preview.innerHTML = "";
+  imageBase64 = [];
+
+  [...imagesInput.files].forEach(file => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      imageBase64.push(reader.result);
+      const img = document.createElement("img");
+      img.src = reader.result;
+      preview.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+});
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+
+  const residence = {
+    title: document.getElementById("title").value,
+    description: document.getElementById("description").value,
+    price: document.getElementById("price").value,
+    images: imageBase64
+  };
+
+  const residences = JSON.parse(localStorage.getItem("residences")) || [];
+  residences.push(residence);
+  localStorage.setItem("residences", JSON.stringify(residences));
+
+  alert("Residence added!");
+  window.location.href = "index.html";
+});
+
+</script>
