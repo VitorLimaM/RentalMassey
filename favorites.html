@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorites - Massey Rental</title>
+</head>
+<body>
+<main>
+    <h1>Your Favorite Residences</h1>
+    <div id="favoritesList"></div>
+</main>
+<script>
+const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+const listingsContainer = document.getElementById("favoritesList");
+favorites.forEach(residence => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const img = document.createElement("img");
+    img.src = residence.image;
+    img.alt = residence.title;
+
+    const info = document.createElement("div");
+    info.className = "card-info";
+
+    const title = document.createElement("h3");
+    title.textContent = residence.title;
+
+    const location = document.createElement("p");
+    location.textContent = residence.location;
+
+    const price = document.createElement("span");
+    price.textContent = `$${residence.price} / night`;
+
+    info.appendChild(title);
+    info.appendChild(location);
+    info.appendChild(price);
+    card.appendChild(img);
+    card.appendChild(info);
+    listingsContainer.appendChild(card);
+});
+</script>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f7f7f7;
+  min-height: 100vh;
+}
+
+/* CONTAINER */
+main {
+  padding: 40px;
+}
+
+main h1 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* GRID */
+#favoritesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* INFO */
+.card-info {
+  padding: 15px;
+}
+
+.card-info h3 {
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.card-info p {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.card-info span {
+  font-weight: bold;
+  color: #ff385c;
+}
+
+</style>
+</body>

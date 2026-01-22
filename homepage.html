@@ -10,7 +10,7 @@
   <header class="header">
     <h1 class="logo">Massey Rentals</h1>
     <nav>
-      <a href="homepage.html">Become a host</a>
+      <a href="favorites.html">My Favorite</a>
       <a href="main.html">Login</a>
       <a href="signup1.html">Sign Up</a>
       <a href="addresidence.html">Add Residence</a>
@@ -31,6 +31,7 @@
         <h3>Modern Apartment</h3>
         <p>Vancouver, BC</p>
         <span>$120 / night</span>
+        <button class="fav-btn">♡</button>
       </div>
     </div>
 
@@ -40,6 +41,7 @@
         <h3>Cozy House</h3>
         <p>Burnaby, BC</p>
         <span>$95 / night</span>
+        <button class="fav-btn">♡</button>
       </div>
     </div>
 
@@ -49,12 +51,13 @@
         <h3>Luxury Studio</h3>
         <p>Richmond, BC</p>
         <span>$150 / night</span>
+        <button class="fav-btn">♡</button>
       </div>
     </div>
   </main>
 <main class="listings" id="listings"></main>
-
 <script src="listings.js"></script>
+
 
 </body>
 </html>
@@ -155,5 +158,18 @@ body {
   color: #ff385c;
   font-weight: bold;
 }
+.fav-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #ff385c;
+  float: right;
+}
+
+.fav-btn.active {
+  content: "❤️";
+}
+
 
 </style>

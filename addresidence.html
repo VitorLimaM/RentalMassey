@@ -163,12 +163,16 @@ form.addEventListener("submit", e => {
     .map(day => day.value);
 
   const residence = {
-    title: title.value,
-    description: description.value,
-    price: price.value,
-    days,
-    images: imageBase64
-  };
+  id: Date.now(), // ID único
+  title: title.value,
+  location: "Vancouver, BC", // pode virar input depois
+  description: description.value,
+  price: Number(price.value),
+  days,
+  images: imageBase64,
+  image: imageBase64[0] || "https://picsum.photos/400/250"
+};
+
 
   const residences = JSON.parse(localStorage.getItem("residences")) || [];
   residences.push(residence);
