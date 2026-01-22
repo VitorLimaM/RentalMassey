@@ -15,43 +15,38 @@
   <h2>Add New Residence</h2>
 
   <form id="residenceForm">
-    <label>House Title</label>
-    <input type="text" placeholder="Modern apartment in Vancouver" required>
 
-    <label>Description</label>
-    <textarea placeholder="Basic description of the place" required></textarea>
+    <label for="title">House Title</label>
+    <input type="text" id="title" placeholder="Modern apartment in Vancouver" required>
 
-    <label>Price per night ($)</label>
-    <input type="number" required>
+    <label for="description">Description</label>
+    <textarea id="description" placeholder="Basic description of the place" required></textarea>
+
+    <label for="price">Price per night ($)</label>
+    <input type="number" id="price" required>
 
     <label>Available days</label>
     <div class="days">
-      <label><input type="checkbox"> Mon</label>
-      <label><input type="checkbox"> Tue</label>
-      <label><input type="checkbox"> Wed</label>
-      <label><input type="checkbox"> Thu</label>
-      <label><input type="checkbox"> Fri</label>
-      <label><input type="checkbox"> Sat</label>
-      <label><input type="checkbox"> Sun</label>
+      <label><input type="checkbox" value="Mon"> Mon</label>
+      <label><input type="checkbox" value="Tue"> Tue</label>
+      <label><input type="checkbox" value="Wed"> Wed</label>
+      <label><input type="checkbox" value="Thu"> Thu</label>
+      <label><input type="checkbox" value="Fri"> Fri</label>
+      <label><input type="checkbox" value="Sat"> Sat</label>
+      <label><input type="checkbox" value="Sun"> Sun</label>
     </div>
-<input type="text" id="title" required>
-<textarea id="description" required></textarea>
-<input type="number" id="price" required>
 
-<input type="file" multiple accept="image/*" id="images">
-
-    <label>Upload photos</label>
-    <input type="file" multiple accept="image/*" id="images">
+    <label for="images">Upload photos</label>
+    <input type="file" id="images" multiple accept="image/*">
 
     <div class="preview" id="preview"></div>
 
     <button type="submit">Add Residence</button>
   </form>
 </main>
-</body>
-</html>
+
 <style>
-    * {
+* {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
@@ -85,10 +80,6 @@ body {
   margin: 40px auto;
   padding: 30px;
   border-radius: 10px;
-}
-
-h2 {
-  margin-bottom: 20px;
 }
 
 form label {
@@ -141,6 +132,7 @@ button {
   cursor: pointer;
 }
 </style>
+
 <script>
 const form = document.getElementById("residenceForm");
 const imagesInput = document.getElementById("images");
@@ -167,19 +159,26 @@ imagesInput.addEventListener("change", () => {
 form.addEventListener("submit", e => {
   e.preventDefault();
 
+  const days = [...document.querySelectorAll(".days input:checked")]
+    .map(day => day.value);
+
   const residence = {
-    title: document.getElementById("title").value,
-    description: document.getElementById("description").value,
-    price: document.getElementById("price").value,
+    title: title.value,
+    description: description.value,
+    price: price.value,
+    days,
     images: imageBase64
   };
 
   const residences = JSON.parse(localStorage.getItem("residences")) || [];
   residences.push(residence);
   localStorage.setItem("residences", JSON.stringify(residences));
+  
 
   alert("Residence added!");
-  window.location.href = "index.html";
+  window.location.href = "homepage.html";
 });
-
 </script>
+
+</body>
+</html>
