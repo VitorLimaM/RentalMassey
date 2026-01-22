@@ -7,16 +7,20 @@
 </head>
 <body>
 
+  <!-- HEADER -->
   <header class="header">
     <h1 class="logo">Massey Rentals</h1>
     <nav>
       <a href="favorites.html">My Favorite</a>
-      <a href="main.html">Login</a>
-      <a href="signup1.html">Sign Up</a>
+      <a href="main.html" id="signInBtn">Login</a>
+      <a href="signup1.html" id="signUpBtn">Sign Up</a>
+      <a href="myprofile.html" id="profileBtn" style="display:none;">My Profile</a>
+      <a href="#" id="logoutBtn" style="display:none;">Logout</a>
       <a href="addresidence.html">Add Residence</a>
     </nav>
   </header>
 
+  <!-- SEARCH -->
   <section class="search">
     <input type="text" placeholder="Location">
     <input type="date">
@@ -24,6 +28,7 @@
     <button>Search</button>
   </section>
 
+  <!-- LISTINGS -->
   <main class="listings">
     <div class="card">
       <img src="https://picsum.photos/400/250?1" alt="">
@@ -55,9 +60,9 @@
       </div>
     </div>
   </main>
-<main class="listings" id="listings"></main>
-<script src="listings.js"></script>
 
+  <main class="listings" id="listings"></main>
+  <script src="listings.js"></script>
 
 </body>
 </html>

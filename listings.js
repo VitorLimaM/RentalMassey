@@ -49,3 +49,31 @@ function toggleFavorite(residence, button) {
 
   localStorage.setItem("favorites", JSON.stringify(favorites));
 }
+
+// Header dinâmico
+const signInBtn = document.getElementById("signInBtn");
+const signUpBtn = document.getElementById("signUpBtn");
+const profileBtn = document.getElementById("profileBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+
+// Pega usuário logado
+const currentUser = JSON.parse(localStorage.getItem("user"));
+const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+
+if (isLoggedIn && currentUser) {
+    signInBtn.style.display = "none";
+    signUpBtn.style.display = "none";
+    profileBtn.style.display = "inline-block";
+    logoutBtn.style.display = "inline-block";
+} else {
+    signInBtn.style.display = "inline-block";
+    signUpBtn.style.display = "inline-block";
+    profileBtn.style.display = "none";
+    logoutBtn.style.display = "none";
+}
+
+// Logout
+logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("loggedIn");
+    window.location.reload();
+});

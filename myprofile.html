@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile - Massey Rentals</title>
+</head>
+<body>
+  <main>
+    <h1>My Profile</h1>
+
+    <form id="profileForm">
+      <label>Username:</label>
+      <input type="text" id="username" required>
+
+      <label>Email:</label>
+      <input type="email" id="email" required>
+
+      <label>Password:</label>
+      <input type="password" id="password" required>
+
+      <label>Address:</label>
+      <input type="text" id="address" required>
+
+      <label>City:</label>
+      <input type="text" id="city" required>
+
+      <label>Province:</label>
+      <input type="text" id="province" required>
+
+      <label>Postal Code:</label>
+      <input type="text" id="postalCode" required>
+
+      <label>Phone:</label>
+      <input type="text" id="phone" required>
+
+      <button type="submit">Save Changes</button>
+    </form>
+  </main>
+
+<script>
+// Checa se usuário está logado
+const loggedIn = localStorage.getItem("loggedIn") === "true";
+const storedUser = JSON.parse(localStorage.getItem("user"));
+if (!loggedIn || !storedUser) {
+    window.location.href = "homepage.html";
+}
+
+// Preenche formulário com dados atuais
+document.getElementById("username").value = storedUser.username;
+document.getElementById("email").value = storedUser.email;
+document.getElementById("password").value = storedUser.password;
+document.getElementById("address").value = storedUser.address || "";
+document.getElementById("city").value = storedUser.city || "";
+document.getElementById("province").value = storedUser.province || "";
+document.getElementById("postalCode").value = storedUser.postalCode || "";
+document.getElementById("phone").value = storedUser.phone || "";
+
+// Salvar alterações
+document.getElementById("profileForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const updatedUser = {
+        username: document.getElementById("username").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value,
+        address: document.getElementById("address").value,
+        city: document.getElementById("city").value,
+        province: document.getElementById("province").value,
+        postalCode: document.getElementById("postalCode").value,
+        phone: document.getElementById("phone").value
+    };
+
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+    alert("Profile updated!");
+    window.location.href = "homepage.html";
+});
+</script>
+<style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff7f50, #ff385c);
+    }
+
+    main {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ff385c;
+      font-size: 28px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input {
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #ff385c;
+      box-shadow: 0 0 5px rgba(255,56,92,0.5);
+    }
+
+    button {
+      background-color: #ff385c;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e02c4b;
+    }
+
+    /* Responsividade */
+    @media (max-width: 500px) {
+      main {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</body>
+</html>
