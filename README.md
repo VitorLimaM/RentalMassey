@@ -52,7 +52,7 @@ Since this project uses native technologies, you don't need to install any packa
 
 ---
 
-🧠 Key Learnings
+## 🧠 Key Learnings
 Building this "from scratch" allowed me to strengthen my skills in:
 
 DOM Manipulation: Handling user interactions and updating the UI dynamically.
