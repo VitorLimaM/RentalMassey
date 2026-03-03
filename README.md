@@ -50,6 +50,8 @@ Since this project uses native technologies, you don't need to install any packa
 ├── script.js       # Core logic and mock data
 └── assets/         # Images, icons, and local media
 
+---
+
 🧠 Key Learnings
 Building this "from scratch" allowed me to strengthen my skills in:
 
